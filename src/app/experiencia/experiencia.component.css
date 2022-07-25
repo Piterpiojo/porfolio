@@ -1,0 +1,17 @@
+.tituloExp{
+  margin-top: 5%;
+}
+
+.experiencia{
+  margin-left: 1%;
+}
+
+.logo-exp{
+  max-width: 8%;
+}
+
+.contenedor-exp{
+  display:flex;
+  flex-direction: row;
+  align-items: flex-start;
+}

@@ -1,0 +1,85 @@
+
+<div class="principio">
+  <div class="logo">
+    <img id="princio" src="https://img2.freepng.es/20181026/fkc/kisspng-computer-icons-computer-programming-portable-netwo-seo-articles-information-on-search-engine-optimi-5bd37c3c2f6f36.9030280215405865561943.jpg" class="perfil">
+    <p>Argentina Pograma</p>
+    <p>#YoProgramo</p>
+  </div>
+  <div class="espacio">
+
+
+  </div>
+
+  <div class="login">
+    <a href="https://www.facebook.com" target="_blank"> <img class ="redes" src="https://cdn.pixabay.com/photo/2015/05/17/10/51/facebook-770688_960_720.png"> </a>
+    <a href="https://www.linkedin.com/" target="_blank"> <img class="redes" src="https://cdn-icons-png.flaticon.com/512/174/174857.png"></a>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Login
+    </button>
+
+  </div>
+
+</div>
+
+<div>
+  <img class="banner" src="https://static.vecteezy.com/system/resources/previews/000/677/302/non_2x/abstract-technology-banner-background.jpg">
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+        <h3 style="text-align: center; color:black">Ingresar</h3>
+        <div class="form-floating mb-3" >
+          <input type="text" formControlName="email" class="form-control" [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}"
+          id="floatingInput" placeholder="Su Usuario">
+
+          <div *ngIf="Email?.errors && Email?.touched">
+            <p *ngIf="Email?.hasError('required')" class="text-danger">
+              El email es requerido
+            </p>
+            <p *ngIf="Email?.hasError('email')" class="text-danger">
+              Ingrese un email valido
+            </p>
+          </div>
+          <label for="floatingInput" style="color:black">Email</label>
+        </div>
+        <div class="form-floating" >
+          <input type="password" formControlName="password" class="form-control" [ngClass]="{'is-invalid':Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}"
+          id="floatingPassword" placeholder="Contrasenia">
+          <div *ngIf="Password?.errors && Password?.touched">
+            <p *ngIf="Password?.hasError('required')" class="text-danger">
+              La contraseña es requerido
+            </p>
+            <p *ngIf="Password?.hasError('minlength')" class="text-danger">
+              La contraseña debe tener 8 o más caracteres
+            </p>
+          </div>
+          <label for="floatingPassword" style="color:black">Contraseña</label>
+        </div>
+
+
+        <ng-container *ngIf= error=true>
+          <div class="alert alert-danger" role="alert">
+            Error al intentar Login
+          </div>
+        </ng-container>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" style="margin: 0 auto;">Ingresar</button>
+        </div>
+      </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+

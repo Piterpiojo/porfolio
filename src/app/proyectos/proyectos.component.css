@@ -1,0 +1,6 @@
+.proyectos{
+  display: flex;
+  flex-direction: row;
+justify-content: center;
+color: black;
+}

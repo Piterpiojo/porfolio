@@ -1,0 +1,40 @@
+<div class="contenedor">
+
+</div>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3 style="text-align: center;">loggear</h3>
+        <div class="form-floating mb-3" >
+          <input type="text" class="form-control" id="floatingInput" placeholder="Su Usuario" required>
+          <label for="floatingInput">Usuario</label>
+        </div>
+        <div class="form-floating" >
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Contrasenia" required>
+          <label for="floatingPassword">Contraseña</label>
+        </div>
+        <button type="button" class="btn btn-success" style="margin: 0 auto;" (click)="intentarLog()">Ingresar</button>
+
+        <ng-container *ngIf= error=true>
+          <div class="alert alert-danger" role="alert">
+            Usuario o contraseña incorrectos
+          </div>
+        </ng-container>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
