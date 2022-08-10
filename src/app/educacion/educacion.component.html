@@ -1,13 +1,21 @@
 <div class="tituloestudio">
-  <h3>Estudios</h3>
+  <h2>Estudios</h2>
 </div>
 
   <div class="estudios">
+      <ul class="lista">
+        <li *ngFor="let educacion of miPorfolio">
+        <div class="logoInstitucion">
+        <img class="estudios-logo" [src]="educacion.logo">
 
-      <img class="estudios-logo" src="http://institutojvgonzalez.buenosaires.edu.ar/img/logo.png">
-    <div class="estudiosAnteriores">
-      <h5>{{titulo}}</h5>
-      <h6>{{institucion}}</h6>
-      <h6>Año de egreso: {{anioEgreso}}</h6>
-    </div>
+          <div class="estudiosAnteriores">
+            <h4>{{educacion.carrera}}</h4>
+            <h6>{{educacion.institucion}}</h6>
+            <h6>Año de Ingreso: {{educacion.desde}}</h6>
+            <h6>Año de Egreso: {{educacion.hasta}}</h6>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
+

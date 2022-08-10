@@ -11,6 +11,7 @@ import { AutenticacionService } from '../servicios/autenticacion.service';
 })
 export class HeaderComponent implements OnInit {
   form:FormGroup;
+  miPortfolio:any;
   constructor(private formBuilder:FormBuilder, private autenticacionService:AutenticacionService) {
     this.form=this.formBuilder.group(
       {

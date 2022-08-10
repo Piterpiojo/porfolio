@@ -1,13 +1,14 @@
 
-<img id="perfil" src="https://i2.wp.com/lamiradafotografia.es/wp-content/uploads/2014/07/foto-perfil-psicologo-180x180.jpg?resize=180%2C180">
+<img id="perfil" [src]="miPorfolio.foto">
 
 <div class="datosPerfil">
   <div id="datosPersonales">
-    <h2>{{miPorfolio.nombre}}</h2>
-    <h4>{{titulo}}</h4>
+    <h2>{{miPorfolio.nombre +" " +miPorfolio.apeliido}}</h2>
+    <h4>{{miPorfolio.titulo}}</h4>
   </div>
   <div id="info">
-    <p>{{descipcion}}</p>
+    <p><em>{{miPorfolio.descripcion}}</em></p>
+
   </div>
 
 </div>

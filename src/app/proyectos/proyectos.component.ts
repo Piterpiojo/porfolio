@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioService } from '../servicios/portfolio.service';
 
 @Component({
   selector: 'app-proyectos',
@@ -6,14 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./proyectos.component.css']
 })
 export class ProyectosComponent implements OnInit {
-
-  constructor() { }
+miPortfolio:any;
+  constructor(private datosPorfolio:PortfolioService) { }
 
   ngOnInit(): void {
+    this.datosPorfolio.obtenerDatos().subscribe(data =>{
+      this.miPortfolio=data.lpro;
+      console.log(this.miPortfolio);
+    })
   }
-  proyecto="Porfolio Web"
-  fecha="2022"
-  descripcion="Porfolio Web creado como proyecto final para Argentina Programa"
-
 
 }

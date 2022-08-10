@@ -1,6 +1,10 @@
 .proyectos{
   display: flex;
-  flex-direction: row;
-justify-content: center;
+flex-direction: column;
+
 color: black;
+}
+
+.lista{
+  list-style: none;
 }

@@ -12,11 +12,8 @@ miPorfolio:any;
 
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data=>{
-      console.log("datos personales" + JSON.stringify(data));
-     // this.miPorfolio=data[0];
+      this.miPorfolio = data;
     })
   }
-  nombre = "Aldo Delgado";
-  titulo ="Full Stack Developer Jr";
-  descipcion= "Este texto";
+
 }
