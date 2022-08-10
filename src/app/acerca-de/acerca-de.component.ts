@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioService } from '../servicios/portfolio.service';
 
 @Component({
   selector: 'app-acerca-de',
@@ -6,13 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit {
-
-  constructor() { }
+miPorfolio:any;
+  constructor(private datosPorfolio:PortfolioService) { }
 
   ngOnInit(): void {
-
+    this.datosPorfolio.obtenerDatos().subscribe(data=>{
+      console.log("datos personales" + JSON.stringify(data));
+     // this.miPorfolio=data[0];
+    })
   }
   nombre = "Aldo Delgado";
   titulo ="Full Stack Developer Jr";
-  descipcion= "Este texto es un ejemplo de como quedaria el espacio de descripcion, se supone que las descripciones son piolitas, asi que rescatate barrilete";
+  descipcion= "Este texto";
 }
