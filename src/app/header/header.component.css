@@ -10,7 +10,7 @@
 
 .principio{
   display:flex;
-  background-color: lightsteelblue;
+  background-color: rgb(21, 59, 109);
   justify-content: space-around;
   position:fixed;
   width: 100%;

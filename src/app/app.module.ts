@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PortfolioService } from './servicios/portfolio.service';
 import { InterceptorService } from './servicios/interceptor.service';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { InterceptorService } from './servicios/interceptor.service';
     EducacionComponent,
     HabilidadesComponent,
     ProyectosComponent,
-    PantallaLoginComponent
+    PantallaLoginComponent,
+    PortfolioComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

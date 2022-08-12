@@ -1,40 +1,35 @@
+<div>
+  <h1 class="mb-5" style="text-align: center;">Portfolio Argentina programa</h1>
 <div class="contenedor">
-
-</div>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Login</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h3 style="text-align: center;">loggear</h3>
-        <div class="form-floating mb-3" >
-          <input type="text" class="form-control" id="floatingInput" placeholder="Su Usuario" required>
-          <label for="floatingInput">Usuario</label>
-        </div>
-        <div class="form-floating" >
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Contrasenia" required>
-          <label for="floatingPassword">Contraseña</label>
-        </div>
-        <button type="button" class="btn btn-success" style="margin: 0 auto;" (click)="intentarLog()">Ingresar</button>
-
-        <ng-container *ngIf= error=true>
-          <div class="alert alert-danger" role="alert">
-            Usuario o contraseña incorrectos
-          </div>
-        </ng-container>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
+<form [formGroup]="form">
+  <h1 class="mb-5" style="text-align: center;">Iniciar Sesión</h1>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}"
+    id="floatingInput" placeholder="Su Usuario">
+    <div *ngIf="Email?.errors && Email?.touched">
+      <p *ngIf="Email?.hasError('required')" class="text-danger">
+        El email es requerido
+      </p>
+      <p *ngIf="Email?.hasError('email')" class="text-danger">
+        Ingrese un email valido
+      </p>
     </div>
   </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Constraseña</label>
+    <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" [ngClass]="{'is-invalid':Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}"
+    id="floatingPassword" placeholder="Contraseña">
+    <div *ngIf="Password?.errors && Password?.touched">
+      <p *ngIf="Password?.hasError('required')" class="text-danger">
+        La contraseña es requerido
+      </p>
+      <p *ngIf="Password?.hasError('minlength')" class="text-danger">
+        La contraseña debe tener 8 o más caracteres
+      </p>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="intentarLog()">Ingresar</button>
+</form>
+</div>
 </div>

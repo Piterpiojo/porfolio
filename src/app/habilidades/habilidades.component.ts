@@ -17,4 +17,8 @@ miPortfolio:any;
     })
   }
 
+
+  id(a:string){
+    console.log("clikeaste " + a);
+  }
 }
