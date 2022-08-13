@@ -28,31 +28,35 @@
           </div>
         </div>
 
-    <form [formGroup]="form" (ngSubmit)="edit(experiencia.id,experiencia.persona_ud, form.value)">
-      <div class="edit-form">
-        <div class="mb-3">
-          <label for="puestof" class="form-label">Puesto:</label>
-          <input type="text" formControlName="puesto" name="puestof" id="p">
+    <form  (ngSubmit)='edit(experiencia.exp_id, formEditar.value)' [formGroup]="formEditar">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Puesto</span>
+          <input type="text" formControlName="puesto" class="form-control" placeholder="Puesto en la empresa" aria-label="Username" value={{experiencia.puesto}} aria-describedby="basic-addon1">
         </div>
-        <div class="mb-3">
-          <label for="empresa" class="form-label"> Empresa:</label>
-          <input type="text" formControlName="empresa" name="empresa" id="e">
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Empresa</span>
+          <input type="text" formControlName="empresa" class="form-control" placeholder="Nombre de la empresa" value={{experiencia.empresa}} aria-label="Recipient's username" aria-describedby="basic-addon2">
         </div>
-        <div class="mb-3">
-          <label for="desde" class="form-label">desde:</label>
-          <input type="text" formControlName="desde" name="desde" id="d">
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Desde</span>
+          <input type="text" formControlName="desde" class="form-control" id="basic-url" value={{experiencia.desde}} aria-describedby="basic-addon3">
         </div>
-        <div class="mb-3">
-          <label for="hasta" class="form-label">hasta:</label>
-          <input type="text" formControlName="hasta" name="hasta" id="h">
+
+        <div class="input-group mb-3">
+          <span class="input-group-text">Hasta</span>
+          <input type="text" formControlName="hasta" class="form-control" value={{experiencia.hasta}} aria-label="Amount (to the nearest dollar)">
+
         </div>
-        <div class="mb-3">
-          <label for="logo" class="form-label">logo:</label>
-          <input type="text" formControlName="logo" name="logo" id="l">
-      </div>
-          <button type="submit"  class="btn btn-primary">editar </button>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text">Url Logo</span>
+          <input type="text" formControlName="logo" class="form-control" value={{experiencia.logo}} placeholder="URL imagen" aria-label="Server">
         </div>
-        </form>
+        <input type="text" formControlName="exp_id" class="form-control" value={{experiencia.exp_id}} placeholder="URL imagen" aria-label="Server">
+          <button type="submit" class="btn btn-primary">editar </button>
+      </form>
 
       </li>
   </ul>

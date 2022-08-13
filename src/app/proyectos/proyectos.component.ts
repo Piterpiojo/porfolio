@@ -13,7 +13,6 @@ miPortfolio:any;
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
       this.miPortfolio=data.lpro;
-      console.log(this.miPortfolio);
     })
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { experienciaI } from '../modelo/experienciaI';
 
 
 import { PortfolioService } from '../servicios/portfolio.service';
@@ -11,19 +12,12 @@ import { PortfolioService } from '../servicios/portfolio.service';
 })
 export class ExperienciaComponent implements OnInit {
 miPorfolio:any;
-form:FormGroup;
+formEditar= new FormGroup({
+  puesto: new FormControl ('', Validators.required)
+})
 
-  constructor(private datosPorfolio:PortfolioService, private formBuilder:FormBuilder) {
-    this.form=this.formBuilder.group(
-      {
-        puesto:[],
-        empresa:[],
-        desde:[],
-        hasta:[],
-        logo:[],
-      }
+  constructor(private datosPorfolio:PortfolioService) {
 
-    )
   }
 
 
@@ -34,9 +28,10 @@ form:FormGroup;
     })
   }
 
-edit(id:number,persona_id:number, form:any){
-  console.log("clickeaste editar el " + id + " persona "+ persona_id + form);
-  JSON.stringify(form);
+edit(id:number,form:any){
+this.datosPorfolio.editarExp(id,form).subscribe(data=>{
+  console.log(data);
+})
 
 }
 
@@ -44,7 +39,7 @@ delete(id:number){
   console.log("vas a eliminar " + id);
   this.datosPorfolio.eliminarExp(id).subscribe(data =>{
     console.log(data);
-    location.reload();
+
   })
 }
 
@@ -58,7 +53,7 @@ agregar(puesto:string,empresa:string,desde:string,hasta:string,logo:string,perso
 
 this.datosPorfolio.agregarExp(exp).subscribe(data =>{
   console.log(data);
-  window.location.reload();
+
 });
 
 }
