@@ -13,14 +13,10 @@
   margin-right: 3%;
 }
 
-.edit-form{
-  display: inline-block;
-  width: 80px;
-
-
-
-
+form{
+  width:40%;
 }
+
 .formato{
   display: flex;
   flex-direction: row;
