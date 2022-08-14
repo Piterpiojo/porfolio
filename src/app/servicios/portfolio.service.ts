@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { experienciaI } from '../modelo/experienciaI';
+import { Experiencia } from '../modelo/experiencia';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,12 @@ export class PortfolioService {
 url:string= "http://localhost:8080/";
   constructor(private http:HttpClient) { }
 
-
+httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      Authorization: 'my-auth-token'
+    })
+  };
 obtenerDatos():Observable<any>{
   return this.http.get<any>(this.url+ "persona/obtenertodo/1");
 }
@@ -23,8 +29,8 @@ eliminarExp(id:number):Observable<any>{
   return this.http.delete(this.url + "experiencia/eliminar/"+ id);
 }
 
-editarExp(id:number,form: any):Observable<any>{
-  let path = this.url + "experiencia/editar";
-  return this.http.put<any>(path,form);
+editarExp(form: Experiencia, id:any):Observable<Experiencia>{
+  let path = this.url + "experiencia/editar/"+id ;
+  return this.http.put<Experiencia>(path,form, this.httpOptions);
 }
 }
