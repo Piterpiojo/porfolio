@@ -37,21 +37,7 @@ formEditar= new FormGroup({
     })
   }
 
-  get Desde(){
-    return this.formEditar.get('desde')?.value;
-  }
-  get Puesto(){
-    return this.formEditar.get('puesto')?.value;
-  }
-  get Empresa(){
-    return this.formEditar.get('empresa')?.value;
-  }
-  get Hasta(){
-    return this.formEditar.get('hasta')?.value;
-  }
-  get Logo(){
-    return this.formEditar.get('logo')?.value;
-  }
+
 
 funcmostrar(exp:number){
   if (this.mostrar !== exp){
@@ -64,9 +50,8 @@ funcmostrar(exp:number){
 
 
 edit(form:Experiencia,persona:number,Id:number){
-
-  const exp = new Experiencia(this.Empresa,this.Puesto,this.Desde,this.Hasta,this.Logo,persona);
-this.datosPorfolio.editarExp(exp,Id).subscribe(data=>{
+form.persona_id = persona;
+this.datosPorfolio.editarExp(form,Id).subscribe(data=>{
   console.log(data);
   this.mostrar = -1;
 
@@ -87,9 +72,9 @@ delete(id:number){
 }
 
 agregar(form:Experiencia){
-  const exp = new Experiencia(this.Empresa,this.Puesto,this.Desde,this.Hasta,this.Logo,this.persona_id);
+form.persona_id=this.persona_id;
 
-this.datosPorfolio.agregarExp(exp).subscribe(data =>{
+this.datosPorfolio.agregarExp(form).subscribe(data =>{
   console.log(data);
 
 });

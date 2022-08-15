@@ -1,22 +1,43 @@
 
+<form>
 <img id="perfil" [src]="miPorfolio.foto" >
-<svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+<svg (click)="mostrar = 1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
   <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
 </svg>
+<div *ngIf="mostrar == 1" class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">URL Foto</span>
+  <input type="text" formControlName="foto" n class="form-control" placeholder={{miPorfolio.foto}}  id="basic-url"  aria-describedby="basic-addon3">
+</div>
 <div class="datosPerfil">
   <div id="datosPersonales">
-    <h2>{{miPorfolio.nombre +" " +miPorfolio.apeliido}}  <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+
+    <h2>{{miPorfolio.nombre +" " +miPorfolio.apeliido}}  <svg (click)="mostrar =2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
       <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
     </svg></h2>
-    <h4>{{miPorfolio.titulo}} <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+          <div *ngIf=" mostrar == 2" class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Nombre</span>
+            <input type="text" formControlName="nombre" placeholder={{miPorfolio.nombre}}  class="form-control" id="basic-url"  aria-describedby="basic-addon3">
+          </div>
+    <h4>{{miPorfolio.titulo}} <svg (click)="mostrar = 3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
       <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
     </svg></h4>
+
+    <div *ngIf="mostrar == 3" class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Titulo</span>
+      <input type="text" formControlName="titulo" placeholder={{miPorfolio.titulo}}  class="form-control" id="basic-url"  aria-describedby="basic-addon3">
+    </div>
   </div>
   <div id="info">
-    <p><em>{{miPorfolio.descripcion}} <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+    <p><em>{{miPorfolio.descripcion}} <svg (click)="mostrar = 4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
       <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
     </svg></em></p>
 
+    <div *ngIf="mostrar ==4" class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Descripcion</span>
+      <input type="text" formControlName="descripcion" placeholder={{miPorfolio.descripcion}}  class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    </div>
   </div>
 
 </div>
+<button *ngIf="mostrar > 0" type="submit" class="btn btn-primary">editar </button>
+</form>
