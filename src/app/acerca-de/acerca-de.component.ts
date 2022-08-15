@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Persona } from '../modelo/persona';
 import { PortfolioService } from '../servicios/portfolio.service';
 
 @Component({
@@ -30,8 +31,11 @@ formEditar = new FormGroup({
     })
   }
 
-editar(){
-
+editar(form:Persona){
+this.datosPorfolio.editarPers(form,this.miPorfolio.persona_id).subscribe(data=>{
+  console.log(data);
+})
+this.mostrar = -1;
 }
 
 }

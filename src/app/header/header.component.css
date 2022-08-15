@@ -13,6 +13,7 @@
   background-color: rgb(21, 59, 109);
   justify-content: space-around;
   position:fixed;
+  z-index: 2;
   width: 100%;
 }
 
