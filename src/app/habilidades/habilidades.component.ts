@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PortfolioService } from '../servicios/portfolio.service';
 import {Habilidad} from '../modelo/Habilidad';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-habilidades',
@@ -57,6 +58,7 @@ this.datosPorfolio.editarHab(form,id).subscribe(data =>{
   console.log(data);
 })
 this.mostrar = -1;
+
 }
 
 
