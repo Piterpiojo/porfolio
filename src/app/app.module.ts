@@ -16,6 +16,7 @@ import { PortfolioService } from './servicios/portfolio.service';
 import { InterceptorService } from './servicios/interceptor.service';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { FooterComponent } from './footer/footer.component';
+import { RecargaDirective } from './directivas/recarga.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FooterComponent } from './footer/footer.component';
     ProyectosComponent,
     PantallaLoginComponent,
     PortfolioComponent,
-    FooterComponent
+    FooterComponent,
+    RecargaDirective
   ],
   imports: [
     BrowserModule,

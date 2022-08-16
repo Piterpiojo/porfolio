@@ -3,12 +3,13 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Observable } from 'rxjs';
 import { AutenticacionService } from './autenticacion.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class InterceptorService implements HttpInterceptor {
-
+cambios:number=0;
   constructor(private autenticacionServicio:AutenticacionService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -22,6 +23,7 @@ export class InterceptorService implements HttpInterceptor {
     }
     console.log("interceptor corre" + JSON.stringify(currentUser));
     return next.handle(req);
+
   }
 
 }

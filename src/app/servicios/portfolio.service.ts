@@ -13,6 +13,7 @@ import { Proyecto } from '../modelo/Proyecto';
 })
 export class PortfolioService {
 url:string= "http://localhost:8080/";
+
   constructor(private http:HttpClient) { }
 
 httpOptions = {
@@ -72,7 +73,8 @@ agregarHab(hab:any):Observable<any>{
 }
 
 editarHab(hab:Habilidad,id:number):Observable<Habilidad>{
-  return this.http.put<Habilidad>(this.url + "habilidad/editar/" + id,hab);
+  return this.http.put<Habilidad>(this.url + "habilidad/editar/" + id,hab) ;
+
 }
 
 eliminarHab(id:number):Observable<any>{

@@ -1,7 +1,7 @@
 <div>
   <h1 class="mb-5" style="text-align: center;">Portfolio Argentina programa</h1>
 <div class="contenedor">
-<form [formGroup]="form">
+<form class="logueate" [formGroup]="form">
   <h1 class="mb-5" style="text-align: center;">Iniciar Sesión</h1>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email</label>
@@ -30,6 +30,57 @@
     </div>
   </div>
   <button type="submit" class="btn btn-primary" (click)="intentarLog()">Ingresar</button>
+  <button type="button" style="margin-left: 15px;" data-bs-toggle="modal" data-bs-target="#registrarModal"  class="btn btn-primary ">Registrar cuenta</button>
 </form>
+</div>
+<div style="color:black ;" class="modal fade" id="registrarModal" tabindex="-1" aria-labelledby="registrarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registrarModalLabel">Creando Cuenta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formCrear" >
+          <div class="mb-3">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Nombbre</span>
+              <input type="text" formControlName="nombre" class="form-control" placeholder="Puesto en la empresa" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Apellido</span>
+              <input type="text" formControlName="apellido" class="form-control" placeholder="Nombre de la empresa"  aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">titulo</span>
+              <input type="text" formControlName="titulo" class="form-control" id="basic-url"  aria-describedby="basic-addon3">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">Descripcion</span>
+              <input type="text" formControlName="descripcion" class="form-control" aria-label="Amount (to the nearest dollar)">
+
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">URL foto</span>
+              <input type="text" formControlName="foto" class="form-control" placeholder="URL imagen" aria-label="Server">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">URL Banner</span>
+              <input type="text" formControlName="banner" class="form-control" placeholder="URL imagen" aria-label="Server">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Registrar</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
 </div>
 </div>

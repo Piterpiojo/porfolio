@@ -1,7 +1,7 @@
 <app-header></app-header>
-<app-acerca-de></app-acerca-de>
-<app-experiencia></app-experiencia>
-<app-educacion></app-educacion>
-<app-habilidades></app-habilidades>
-<app-proyectos></app-proyectos>
+<app-acerca-de (editoPers)="recibidoPers($event)" *appRecarga="recargarPers"></app-acerca-de>
+<app-experiencia (editoExp)="recibidoExp($event)" *appRecarga="recargarExp"> </app-experiencia>
+<app-educacion (editoEdu)="recibidoEdu($event)" *appRecarga="recargarEdu"></app-educacion>
+<app-habilidades (edito)="recibido($event)" *appRecarga="recargar"></app-habilidades>
+<app-proyectos (editoPro)="recibidoPro($event)" *appRecarga="recargarPro"></app-proyectos>
 <app-footer></app-footer>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Proyecto } from '../modelo/Proyecto';
 import { PortfolioService } from '../servicios/portfolio.service';
@@ -13,6 +13,10 @@ export class ProyectosComponent implements OnInit {
 persona_id:number=-1;
 miPortfolio:any;
 mostrar:number= -1;
+
+@Output()
+editoPro: EventEmitter<number> = new EventEmitter<number>();
+
 
 formEditar=new FormGroup({
   titulo: new FormControl('',Validators.required),
@@ -45,12 +49,14 @@ form.persona_id= this.persona_id;
 this.datosPorfolio.agregarPro(form).subscribe(data =>{
   console.log(data);
 });
+this.editoPro.emit();
 }
 
 eliminar(id:number){
   this.datosPorfolio.eliminarPro(id).subscribe(data =>{
     console.log(data);
   })
+  this.editoPro.emit();
 }
 
 edit(form:Proyecto,id:number){
@@ -58,5 +64,6 @@ form.persona_id= this.persona_id;
 this.datosPorfolio.editarPro(form,id).subscribe(data =>{
   console.log(data);
 })
+this.editoPro.emit();
 }
 }

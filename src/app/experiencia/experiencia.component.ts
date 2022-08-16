@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
@@ -16,6 +16,11 @@ import { PortfolioService } from '../servicios/portfolio.service';
 export class ExperienciaComponent implements OnInit {
 miPorfolio:any;
 mostrar:number= -1;
+
+@Output()
+editoExp: EventEmitter<number> = new EventEmitter<number>();
+
+
 persona_id:number = -1;
 
 formEditar= new FormGroup({
@@ -56,7 +61,7 @@ this.datosPorfolio.editarExp(form,Id).subscribe(data=>{
   this.mostrar = -1;
 
 })
-
+this.editoExp.emit();
 
 
 }
@@ -68,7 +73,7 @@ delete(id:number){
     console.log(data);
 
   })
-
+  this.editoExp.emit();
 }
 
 agregar(form:Experiencia){
@@ -78,6 +83,6 @@ this.datosPorfolio.agregarExp(form).subscribe(data =>{
   console.log(data);
 
 });
-
+this.editoExp.emit();
 }
 }

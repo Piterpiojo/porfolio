@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Persona } from '../modelo/persona';
 import { PortfolioService } from '../servicios/portfolio.service';
@@ -12,6 +12,9 @@ export class AcercaDeComponent implements OnInit {
 
 mostrar:number = -1;
 miPorfolio:any;
+
+@Output()
+editoPers: EventEmitter<number> = new EventEmitter<number>();
 
 formEditar = new FormGroup({
   nombre: new FormControl(''),
@@ -36,6 +39,7 @@ this.datosPorfolio.editarPers(form,this.miPorfolio.persona_id).subscribe(data=>{
   console.log(data);
 })
 this.mostrar = -1;
+this.editoPers.emit();
 }
 
 }

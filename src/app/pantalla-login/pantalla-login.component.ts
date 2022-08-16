@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AutenticacionService } from '../servicios/autenticacion.service';
 @Component({
@@ -10,6 +10,15 @@ import { AutenticacionService } from '../servicios/autenticacion.service';
 export class PantallaLoginComponent implements OnInit {
   form:FormGroup;
   miPortfolio:any;
+  formCrear= new FormGroup({
+    nombre: new FormControl ('', Validators.required),
+    apellido: new FormControl ('', Validators.required),
+    titulo: new FormControl ('',Validators.required),
+    descripcion: new FormControl ('',Validators.required),
+    foto: new FormControl ('',Validators.required),
+    banner: new FormControl ('',Validators.required)
+  });
+
   constructor(private formBuilder:FormBuilder, private autenticacionService:AutenticacionService, private ruta:Router) {
     this.form=this.formBuilder.group(
       {

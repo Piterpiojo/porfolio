@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PortfolioService } from '../servicios/portfolio.service';
 import {Habilidad} from '../modelo/Habilidad';
-import { Router } from '@angular/router';
+
+
+
+
+
 
 @Component({
   selector: 'app-habilidades',
@@ -13,6 +17,11 @@ export class HabilidadesComponent implements OnInit {
 miPortfolio:any;
 persona_id:number=-1;
 mostrar:number=-1;
+
+@Output()
+edito: EventEmitter<number> = new EventEmitter<number>();
+recargar:number=0;
+
 formEditar= new FormGroup({
 nombre: new FormControl('',Validators.required),
 valor:new FormControl('',Validators.required)
@@ -23,7 +32,6 @@ valor:new FormControl('',Validators.required)
     this.datosPorfolio.obtenerDatos().subscribe(data => {
       this.persona_id = data.persona_id;
       this.miPortfolio=data.lhabl;
-
     })
   }
 
@@ -42,14 +50,17 @@ valor:new FormControl('',Validators.required)
 agregar(form:Habilidad){
 form.persona_id=this.persona_id;
 this.datosPorfolio.agregarHab(form).subscribe(data =>{
-console.log(data);
+
 });
+this.edito.emit(this.recargar);
 }
 
 eliminar(id:number){
   this.datosPorfolio.eliminarHab(id).subscribe(data =>{
     console.log(data);
+
   })
+  this.edito.emit(this.recargar);
 }
 
 editar(form:Habilidad,id:number){
@@ -58,8 +69,9 @@ this.datosPorfolio.editarHab(form,id).subscribe(data =>{
   console.log(data);
 })
 this.mostrar = -1;
-
+this.edito.emit(this.recargar);
 }
+
 
 
 }
