@@ -30,7 +30,7 @@
       </p>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary" >Ingresar</button>
+  <button type="submit" [disabled]="form.invalid" class="btn btn-primary" >Ingresar</button>
   <button type="button" style="margin-left: 15px;" data-bs-toggle="modal" data-bs-target="#registrarModal"  class="btn btn-primary ">Registrar cuenta</button>
   <button type="button" (click)="ver()" style="margin-left: 15px;" class="btn btn-primary" >Ver mi Portfolio</button>
 </form>
@@ -46,28 +46,33 @@
         <form [formGroup]="formCrear" (ngSubmit)="registrar(formCrear.value)" >
           <div class="mb-3">
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Email</span>
-              <input type="email" formControlName="email" class="form-control" placeholder="Email para iniciar Sesión" aria-label="Username" aria-describedby="basic-addon1">
+              <span class="input-group-text" id="basic-addon1">Email*</span>
+              <input type="email"  formControlName="email" class="form-control" placeholder="Email para iniciar Sesión" aria-label="Username" aria-describedby="basic-addon1"
+              [ngClass]="{'is-invalid':formCrear.get('email')?.errors && formCrear.get('email')?.touched, 'is-valid': !formCrear.get('email')?.errors && formCrear.get('email')?.touched}">
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Contraseña</span>
-              <input type="password" formControlName="password" class="form-control" placeholder="Conseña de la cuenta"  aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <span class="input-group-text" id="basic-addon1">Contraseña*</span>
+              <input type="password" formControlName="password" class="form-control" placeholder="Conseña de la cuenta"  aria-label="Recipient's username" aria-describedby="basic-addon2"
+              [ngClass]="{'is-invalid':formCrear.get('password')?.errors && formCrear.get('password')?.touched, 'is-valid': !formCrear.get('password')?.errors && formCrear.get('password')?.touched}">
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Nombre</span>
-              <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1">
+              <span class="input-group-text" id="basic-addon1">Nombre*</span>
+              <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1"
+              [ngClass]="{'is-invalid':formCrear.get('nombre')?.errors && formCrear.get('nombre')?.touched, 'is-valid': !formCrear.get('nombre')?.errors && formCrear.get('nombre')?.touched}">
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Apellido</span>
-              <input type="text" formControlName="apellido" class="form-control" placeholder="Apellido"  aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <span class="input-group-text" id="basic-addon1">Apellido*</span>
+              <input type="text" formControlName="apellido" class="form-control" placeholder="Apellido"  aria-label="Recipient's username" aria-describedby="basic-addon2"
+              [ngClass]="{'is-invalid':formCrear.get('apellido')?.errors && formCrear.get('apellido')?.touched, 'is-valid': !formCrear.get('apellido')?.errors && formCrear.get('apellido')?.touched}">
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Titulo</span>
-              <input type="text" formControlName="titulo" placeholder="El titulo que tienes" class="form-control" id="basic-url"  aria-describedby="basic-addon3">
+              <span class="input-group-text" id="basic-addon1">Titulo*</span>
+              <input type="text" formControlName="titulo" placeholder="El titulo que tienes" class="form-control" id="basic-url"  aria-describedby="basic-addon3"
+              [ngClass]="{'is-invalid':formCrear.get('titulo')?.errors && formCrear.get('titulo')?.touched, 'is-valid': !formCrear.get('titulo')?.errors && formCrear.get('titulo')?.touched}">
             </div>
 
             <div class="input-group mb-3">
@@ -84,15 +89,20 @@
               <span class="input-group-text">URL Banner</span>
               <input type="text" formControlName="banner" class="form-control" placeholder="URL Banner" aria-label="Server">
             </div>
+            <p>* es requerido</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Registrar</button>
+            <button type="submit" [disabled]="formCrear.invalid" class="btn btn-primary" data-bs-dismiss="modal">Registrar</button>
+
           </div>
+
         </form>
+
       </div>
 
     </div>
   </div>
+
 </div>
 </div>

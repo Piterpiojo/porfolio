@@ -13,23 +13,30 @@
           <form [formGroup]="formEditar" (ngSubmit)="agregar(formEditar.value)">
             <div class="mb-3">
               <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">institucion</span>
-                <input type="text" formControlName="institucion" class="form-control" placeholder="Nombre de la institucion" aria-label="Username" aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon1">Institucion*</span>
+                <input type="text" formControlName="institucion" class="form-control" placeholder="Nombre de la institucion" aria-label="Username" aria-describedby="basic-addon1"
+                [ngClass]="{'is-invalid':formEditar.get('institucion')?.errors && formEditar.get('institucion')?.touched, 'is-valid': !formEditar.get('institucion')?.errors && formEditar.get('institucion')?.touched}">
+
               </div>
 
               <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Carrera</span>
-                <input type="text" formControlName="carrera" class="form-control" placeholder="nombre de la carerra"  aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon1">Carrera*</span>
+                <input type="text" formControlName="carrera" class="form-control" placeholder="nombre de la carerra"  aria-label="Recipient's username" aria-describedby="basic-addon2"
+                [ngClass]="{'is-invalid':formEditar.get('carrera')?.errors && formEditar.get('carrera')?.touched, 'is-valid': !formEditar.get('carrera')?.errors && formEditar.get('carrera')?.touched}">
+
               </div>
 
               <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Desde</span>
-                <input type="text" formControlName="desde" name="desde" class="form-control" id="basic-url"  aria-describedby="basic-addon3">
+                <span class="input-group-text" id="basic-addon1">Desde*</span>
+                <input type="text" formControlName="desde"  class="form-control" id="basic-url"  aria-describedby="basic-addon3"
+                [ngClass]="{'is-invalid':formEditar.get('desde')?.errors && formEditar.get('desde')?.touched, 'is-valid': !formEditar.get('desde')?.errors && formEditar.get('desde')?.touched}">
+
               </div>
 
               <div class="input-group mb-3">
-                <span class="input-group-text">Hasta</span>
-                <input type="text" formControlName="hasta" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-text">Hasta*</span>
+                <input type="text" formControlName="hasta" class="form-control" aria-label="Amount (to the nearest dollar)"
+                [ngClass]="{'is-invalid':formEditar.get('hasta')?.errors && formEditar.get('hasta')?.touched, 'is-valid': !formEditar.get('hasta')?.errors && formEditar.get('hasta')?.touched}">
 
               </div>
 
@@ -37,10 +44,11 @@
                 <span class="input-group-text">Url Logo</span>
                 <input type="text" formControlName="logo" class="form-control" placeholder="URL imagen" aria-label="Server">
               </div>
+              *es Requerido
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Cargar</button>
+              <button type="submit" [disabled]="formEditar.invalid" class="btn btn-primary" data-bs-dismiss="modal">Cargar</button>
             </div>
           </form>
         </div>

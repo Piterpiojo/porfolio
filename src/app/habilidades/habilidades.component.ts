@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PortfolioService } from '../servicios/portfolio.service';
 import {Habilidad} from '../modelo/Habilidad';
 import { TokenService } from '../servicios/token.service';
+import { fromEventPattern } from 'rxjs';
 
 
 
@@ -20,6 +21,7 @@ persona_id:number=-1;
 email!:string;
 mostrar:number=-1;
 logueado:boolean= false;
+fueraDeRango=false
 
 @Output()
 edito: EventEmitter<number> = new EventEmitter<number>();
@@ -27,7 +29,7 @@ recargar:number=0;
 
 formEditar= new FormGroup({
 nombre: new FormControl('',Validators.required),
-valor:new FormControl('',Validators.required)
+valor:new FormControl(0,Validators.required)
 })
   constructor(private datosPorfolio:PortfolioService,private tokenService:TokenService) { }
 
@@ -58,10 +60,16 @@ valor:new FormControl('',Validators.required)
 
 agregar(form:Habilidad){
 form.persona_id=this.persona_id;
-this.datosPorfolio.agregarHab(form).subscribe(data =>{
+if(form.valor > 0 && form.valor < 101){
+  this.datosPorfolio.agregarHab(form).subscribe(data =>{
 
-});
-this.edito.emit(this.recargar);
+  });
+  this.edito.emit(this.recargar);
+  this.fueraDeRango=false;
+}else{
+this.fueraDeRango= true;
+}
+
 }
 
 eliminar(id:number){

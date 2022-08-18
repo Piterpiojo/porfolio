@@ -29,7 +29,7 @@ formEditar= new FormGroup({
   empresa: new FormControl ('', Validators.required),
   desde: new FormControl ('',Validators.required),
   hasta: new FormControl ('',Validators.required),
-  logo: new FormControl ('',Validators.required),
+  logo: new FormControl ('')
 })
 
   constructor(private datosPorfolio:PortfolioService, private tokenService:TokenService) {
@@ -51,7 +51,9 @@ formEditar= new FormGroup({
   }
 
 
-
+get Puesto(){
+  return this.formEditar.get("puesto");
+}
 
 funcmostrar(exp:number){
   if (this.mostrar !== exp){
@@ -88,10 +90,12 @@ delete(id:number){
 agregar(form:Experiencia){
 form.persona_id=this.persona_id;
 
+
 this.datosPorfolio.agregarExp(form).subscribe(data =>{
   console.log(data);
-
 });
 this.editoExp.emit();
+
+
 }
 }

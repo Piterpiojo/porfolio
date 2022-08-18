@@ -31,9 +31,9 @@ export class PantallaLoginComponent implements OnInit {
     nombre: new FormControl ('', Validators.required),
     apellido: new FormControl ('', Validators.required),
     titulo: new FormControl ('',Validators.required),
-    descripcion: new FormControl ('',Validators.required),
-    foto: new FormControl ('',Validators.required),
-    banner: new FormControl ('',Validators.required),
+    descripcion: new FormControl (''),
+    foto: new FormControl (''),
+    banner: new FormControl (''),
     email:new FormControl('',Validators.required),
     password: new FormControl('',Validators.required)
   });
@@ -47,6 +47,7 @@ export class PantallaLoginComponent implements OnInit {
       }
 
     )
+
   }
 
   ngOnInit(): void {
@@ -55,6 +56,7 @@ export class PantallaLoginComponent implements OnInit {
       this.isLogginFail = false;
       this.roles = this.tokenService.getAuthorities();
     }
+
   }
 
 
@@ -73,15 +75,6 @@ export class PantallaLoginComponent implements OnInit {
 
 
 
-
-  onEnviar(event:any){
-
-    let usuario=new LoginUsuario(event.email,event.password);
-    this.autenticacionService.login(usuario).subscribe(data=>{
-      console.log("DATA:" + JSON.stringify(data));
-      this.ruta.navigate(['/portfolio']);
-    })
-  }
 
   ver(){
     this.ruta.navigate(['/portfolio']);

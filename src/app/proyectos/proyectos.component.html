@@ -13,16 +13,20 @@
           <form [formGroup]="formEditar" (ngSubmit)="agregar(formEditar.value)">
             <div class="mb-3">
               <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Titulo</span>
-                <input type="text" formControlName="titulo" class="form-control" placeholder="Titulo del proyecto" aria-label="Username" aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon1">Titulo*</span>
+                <input type="text" formControlName="titulo" class="form-control" placeholder="Titulo del proyecto" aria-label="Username" aria-describedby="basic-addon1"
+                [ngClass]="{'is-invalid':formEditar.get('titulo')?.errors && formEditar.get('titulo')?.touched, 'is-valid': !formEditar.get('titulo')?.errors && formEditar.get('titulo')?.touched}">
+
               </div>
 
               <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Descripcion</span>
-                <input type="text" formControlName="descripcion" class="form-control" placeholder="descripcion del proyecto"  aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <span class="input-group-text" id="basic-addon1">Descripcion*</span>
+                <input type="text" formControlName="descripcion" class="form-control" placeholder="descripcion del proyecto"  aria-label="Recipient's username" aria-describedby="basic-addon2"
+                [ngClass]="{'is-invalid':formEditar.get('descripcion')?.errors && formEditar.get('descripcion')?.touched, 'is-valid': !formEditar.get('descripcion')?.errors && formEditar.get('descripcion')?.touched}">
+
               </div>
 
-              <div class="input-group mb-3">
+              <div  class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Link Al Proyecto</span>
                 <input type="text" formControlName="link" name="desde" class="form-control" id="basic-url"  aria-describedby="basic-addon3">
               </div>
@@ -31,11 +35,11 @@
                 <span class="input-group-text">Url Imagen</span>
                 <input type="text" formControlName="img" class="form-control" aria-label="Amount (to the nearest dollar)">
               </div>
-
+              <p>* es requerido</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Cargar</button>
+              <button type="submit" [disabled]="formEditar.invalid" class="btn btn-primary" data-bs-dismiss="modal">Cargar</button>
             </div>
           </form>
         </div>
@@ -67,7 +71,7 @@
                   <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                 </svg></h5>
               <p class="card-text">{{proyecto.descripcion}}</p>
-              <a href={{proyecto.link}} target="_blank" class="card-text">Link al Proyecto</a>
+              <a *ngIf="proyecto.link != ''"  href={{proyecto.link}} target="_blank" class="card-text">Link al Proyecto</a>
             </div>
 
           </div>

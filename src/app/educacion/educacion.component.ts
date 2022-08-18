@@ -26,7 +26,7 @@ formEditar= new FormGroup({
   carrera: new FormControl ('', Validators.required),
   desde: new FormControl ('',Validators.required),
   hasta: new FormControl ('',Validators.required),
-  logo: new FormControl ('',Validators.required),
+  logo: new FormControl (''),
 });
 
   constructor(private datosPorfolio:PortfolioService, private tokenService:TokenService) { }

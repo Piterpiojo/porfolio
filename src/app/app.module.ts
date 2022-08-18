@@ -17,7 +17,7 @@ import { InterceptorService } from './servicios/interceptor.service';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { FooterComponent } from './footer/footer.component';
 import { RecargaDirective } from './directivas/recarga.directive';
-import { TokenService } from './servicios/token.service';
+
 
 @NgModule({
   declarations: [

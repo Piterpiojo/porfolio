@@ -22,8 +22,8 @@ editoPro: EventEmitter<number> = new EventEmitter<number>();
 formEditar=new FormGroup({
   titulo: new FormControl('',Validators.required),
   descripcion: new FormControl('',Validators.required),
-  img: new FormControl('',Validators.required),
-  link: new FormControl('',Validators.required)
+  img: new FormControl(''),
+  link: new FormControl('')
 })
 
   constructor(private datosPorfolio:PortfolioService, private tokenService:TokenService) { }
