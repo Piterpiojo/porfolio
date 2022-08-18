@@ -7,6 +7,7 @@ import { Experiencia} from '../modelo/experiencia';
 
 
 import { PortfolioService } from '../servicios/portfolio.service';
+import { TokenService } from '../servicios/token.service';
 
 @Component({
   selector: 'app-experiencia',
@@ -16,7 +17,7 @@ import { PortfolioService } from '../servicios/portfolio.service';
 export class ExperienciaComponent implements OnInit {
 miPorfolio:any;
 mostrar:number= -1;
-
+logueado:boolean= false;
 @Output()
 editoExp: EventEmitter<number> = new EventEmitter<number>();
 
@@ -31,7 +32,7 @@ formEditar= new FormGroup({
   logo: new FormControl ('',Validators.required),
 })
 
-  constructor(private datosPorfolio:PortfolioService) {
+  constructor(private datosPorfolio:PortfolioService, private tokenService:TokenService) {
 
   }
 
@@ -40,7 +41,15 @@ formEditar= new FormGroup({
       this.persona_id = data.persona_id;
       this.miPorfolio = data.lexp;
     })
+
+    if(this.tokenService.getToken()){
+      this.logueado = true;
+    }else{
+      this.logueado= false;
+    }
+
   }
+
 
 
 

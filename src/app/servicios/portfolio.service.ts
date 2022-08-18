@@ -14,6 +14,7 @@ import { Proyecto } from '../modelo/Proyecto';
 })
 export class PortfolioService {
 url:string= "http://localhost:8080/";
+email:string="aldo@aldo.com";
 
   constructor(private http:HttpClient) { }
 
@@ -27,7 +28,7 @@ httpOptions = {
 
 
 obtenerDatos():Observable<any>{
-  return this.http.get<any>(this.url+ "persona/obtenertodo/1");
+  return this.http.get<any>(this.url+ "persona/obtenertodo/" + this.email);
 }
 
 

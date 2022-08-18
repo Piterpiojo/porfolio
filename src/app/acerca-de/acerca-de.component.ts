@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Persona } from '../modelo/persona';
 import { PortfolioService } from '../servicios/portfolio.service';
+import { TokenService } from '../servicios/token.service';
 
 @Component({
   selector: 'app-acerca-de',
@@ -12,7 +13,7 @@ export class AcercaDeComponent implements OnInit {
 
 mostrar:number = -1;
 miPorfolio:any;
-
+logueado:boolean= false;
 @Output()
 editoPers: EventEmitter<number> = new EventEmitter<number>();
 
@@ -26,12 +27,19 @@ formEditar = new FormGroup({
 
 })
 
-  constructor(private datosPorfolio:PortfolioService) { }
+  constructor(private datosPorfolio:PortfolioService,private tokenService:TokenService) { }
 
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data=>{
       this.miPorfolio = data;
     })
+    if(this.tokenService.getToken()){
+      this.logueado = true;
+    }else{
+      this.logueado= false;
+    }
+
+
   }
 
 editar(form:Persona){

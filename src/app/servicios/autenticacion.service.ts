@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { JwtDto } from '../modelo/JwtDto';
 import { LoginUsuario } from '../modelo/LoginUsuario';
 import { NuevoUsuario } from '../modelo/NuevoUsuario';
@@ -10,7 +9,7 @@ import { NuevoUsuario } from '../modelo/NuevoUsuario';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url="http://localhost:8080/auth/login";
+  url="http://localhost:8080/";
 
   constructor(private http:HttpClient) {}
 
@@ -20,19 +19,12 @@ export class AutenticacionService {
 
 
 
-  iniciarSesion(credenciales:any):Observable<any>
-  {
-    return this.http.post(this.url,credenciales).pipe(map(data=>{
-      sessionStorage.setItem('currentUser', JSON.stringify(data));
-      return data;
-    }))
-  }
 
   crearCuenta(usuario:NuevoUsuario):Observable<any>{
     return this.http.post<any>(this.url+ "auth/nuevo",usuario);
   }
 
 login(loginUsuario: LoginUsuario): Observable<JwtDto>{
-    return this.http.post<JwtDto>(this.url, loginUsuario)
+    return this.http.post<JwtDto>(this.url +"auth/login", loginUsuario)
   }
 }

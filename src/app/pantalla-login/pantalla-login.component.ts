@@ -83,6 +83,10 @@ export class PantallaLoginComponent implements OnInit {
     })
   }
 
+  ver(){
+    this.ruta.navigate(['/portfolio']);
+  }
+
   onLogin(form:any): void{
     this.loginUsuario = new LoginUsuario(form.email, form.password);
     this.autenticacionService.login(this.loginUsuario).subscribe(data =>{
@@ -93,6 +97,7 @@ export class PantallaLoginComponent implements OnInit {
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
         this.ruta.navigate(['/portfolio'])
+        this.datosPorfolio.email=form.email;
       }, err =>{
         this.isLogged = false;
         this.isLogginFail = true;
@@ -103,7 +108,7 @@ export class PantallaLoginComponent implements OnInit {
 
   registrar(cuenta:any){
     let usuario=new NuevoUsuario(cuenta.email,cuenta.password);
-    let persona= new Persona(cuenta.nombre,cuenta.apellido,cuenta.foto,cuenta.descripcion,cuenta.banner,cuenta.titulo);
+    let persona= new Persona(cuenta.nombre,cuenta.apellido,cuenta.foto,cuenta.descripcion,cuenta.banner,cuenta.titulo,cuenta.email);
     this.datosPorfolio.agregarPers(persona).subscribe(data=>{
       console.log(data);
     });

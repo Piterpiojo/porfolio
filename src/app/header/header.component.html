@@ -13,8 +13,11 @@
     <a href="https://www.facebook.com" target="_blank"> <img class ="redes" src="https://cdn.pixabay.com/photo/2015/05/17/10/51/facebook-770688_960_720.png"> </a>
     <a href="https://www.linkedin.com/" target="_blank"> <img class="redes" src="https://cdn-icons-png.flaticon.com/512/174/174857.png"></a>
 
-    <button (click)="logout()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <button *ngIf=(logueado) (click)="logout()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       Logout
+    </button>
+    <button *ngIf=!(logueado) (click)="ingresar()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Ingresar
     </button>
 
   </div>

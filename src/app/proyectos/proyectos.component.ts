@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Proyecto } from '../modelo/Proyecto';
 import { PortfolioService } from '../servicios/portfolio.service';
+import { TokenService } from '../servicios/token.service';
 
 @Component({
   selector: 'app-proyectos',
@@ -13,7 +14,7 @@ export class ProyectosComponent implements OnInit {
 persona_id:number=-1;
 miPortfolio:any;
 mostrar:number= -1;
-
+logueado:boolean=false;
 @Output()
 editoPro: EventEmitter<number> = new EventEmitter<number>();
 
@@ -25,13 +26,18 @@ formEditar=new FormGroup({
   link: new FormControl('',Validators.required)
 })
 
-  constructor(private datosPorfolio:PortfolioService) { }
+  constructor(private datosPorfolio:PortfolioService, private tokenService:TokenService) { }
 
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
       this.persona_id = data.persona_id;
       this.miPortfolio=data.lpro;
     })
+    if(this.tokenService.getToken()){
+      this.logueado = true;
+    }else{
+      this.logueado= false;
+    }
   }
 
   funcmostrar(exp:number){

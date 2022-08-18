@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Estudios } from '../modelo/Estudios';
 import { PortfolioService } from '../servicios/portfolio.service';
+import { TokenService } from '../servicios/token.service';
 
 @Component({
   selector: 'app-educacion',
@@ -13,7 +14,7 @@ export class EducacionComponent implements OnInit {
 miPorfolio:any;
 persona_id:number=-1;
 mostrar:number=-1;
-
+logueado:boolean= false;
 
 @Output()
 editoEdu: EventEmitter<number> = new EventEmitter<number>();
@@ -28,7 +29,7 @@ formEditar= new FormGroup({
   logo: new FormControl ('',Validators.required),
 });
 
-  constructor(private datosPorfolio:PortfolioService) { }
+  constructor(private datosPorfolio:PortfolioService, private tokenService:TokenService) { }
 
   ngOnInit(): void {
     this.datosPorfolio.obtenerDatos().subscribe(data =>{
@@ -37,6 +38,12 @@ formEditar= new FormGroup({
       this.miPorfolio = data.ledu;
 
     })
+
+    if(this.tokenService.getToken()){
+      this.logueado = true;
+    }else{
+      this.logueado= false;
+    }
   }
 
 
