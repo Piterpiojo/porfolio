@@ -2,28 +2,37 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { JwtDto } from '../modelo/JwtDto';
+import { LoginUsuario } from '../modelo/LoginUsuario';
+import { NuevoUsuario } from '../modelo/NuevoUsuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url="http://npinti.ddns.net:9008/api/auth/login";
-  currentUserSubject: BehaviorSubject<any>;
-  constructor(private http:HttpClient) {
-    console.log("el servicio funciona");
-    this.currentUserSubject= new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')||'{}'))
-  }
+  url="http://localhost:8080/auth/login";
+
+  constructor(private http:HttpClient) {}
+
+
+
+
+
+
+
   iniciarSesion(credenciales:any):Observable<any>
   {
     return this.http.post(this.url,credenciales).pipe(map(data=>{
       sessionStorage.setItem('currentUser', JSON.stringify(data));
-      this.currentUserSubject.next(data);
-
       return data;
     }))
   }
 
-  get UsuarioAutenticado(){
-    return this.currentUserSubject;
+  crearCuenta(usuario:NuevoUsuario):Observable<any>{
+    return this.http.post<any>(this.url+ "auth/nuevo",usuario);
+  }
+
+login(loginUsuario: LoginUsuario): Observable<JwtDto>{
+    return this.http.post<JwtDto>(this.url, loginUsuario)
   }
 }

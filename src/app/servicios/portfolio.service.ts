@@ -8,6 +8,7 @@ import { Persona } from '../modelo/persona';
 import { Proyecto } from '../modelo/Proyecto';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -104,5 +105,8 @@ editarPers(pers:Persona,id:number):Observable<Persona>{
 agregarPers(pers:Persona):Observable<Persona>{
   return this.http.post<any>(this.url + "persona/crear",pers);
 }
+
+
+
 }
 
