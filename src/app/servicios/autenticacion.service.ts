@@ -9,7 +9,7 @@ import { NuevoUsuario } from '../modelo/NuevoUsuario';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url="http://localhost:8080/";
+  url="https://fierce-cliffs-56094.herokuapp.com/";
 
   constructor(private http:HttpClient) {}
 

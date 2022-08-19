@@ -13,7 +13,7 @@ import { Proyecto } from '../modelo/Proyecto';
   providedIn: 'root'
 })
 export class PortfolioService {
-url:string= "http://localhost:8080/";
+url:string= "https://fierce-cliffs-56094.herokuapp.com/";
 email:string="aldo@aldo.com";
 
   constructor(private http:HttpClient) { }
