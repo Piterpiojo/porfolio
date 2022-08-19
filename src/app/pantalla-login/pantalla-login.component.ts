@@ -35,7 +35,7 @@ export class PantallaLoginComponent implements OnInit {
     foto: new FormControl (''),
     banner: new FormControl (''),
     email:new FormControl('',Validators.required),
-    password: new FormControl('',Validators.required)
+    password: new FormControl('',Validators.minLength(8))
   });
 
   constructor(private formBuilder:FormBuilder,private tokenService:TokenService, private autenticacionService:AutenticacionService, private ruta:Router, private datosPorfolio:PortfolioService) {
