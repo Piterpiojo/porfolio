@@ -25,7 +25,9 @@ export class PantallaLoginComponent implements OnInit {
   roles: string[] = [];
   errMsj!: string;
 
-
+  formVer= new FormGroup({
+    emailVer: new FormControl('')
+  })
 
   formCrear= new FormGroup({
     nombre: new FormControl ('', Validators.required),
@@ -72,12 +74,16 @@ export class PantallaLoginComponent implements OnInit {
     return this.form.get("password");
   }
 
+  get contrasenia(){
+    return this.formCrear.get("password")
+  }
 
 
 
 
   ver(){
     this.ruta.navigate(['/portfolio']);
+    this.datosPorfolio.email= "aldo@aldo.com"
   }
 
   onLogin(form:any): void{
@@ -102,6 +108,12 @@ export class PantallaLoginComponent implements OnInit {
   registrar(cuenta:any){
     let usuario=new NuevoUsuario(cuenta.email,cuenta.password);
     let persona= new Persona(cuenta.nombre,cuenta.apellido,cuenta.foto,cuenta.descripcion,cuenta.banner,cuenta.titulo,cuenta.email);
+    if(persona.banner === ''){
+      persona.banner = "https://static.vecteezy.com/system/resources/previews/000/677/302/non_2x/abstract-technology-banner-background.jpg";
+    }
+    if(persona.foto ===  ''){
+      persona.foto = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+    }
     this.datosPorfolio.agregarPers(persona).subscribe(data=>{
       console.log(data);
     });
@@ -110,6 +122,12 @@ export class PantallaLoginComponent implements OnInit {
     });
 
 
+  }
+
+  verOtros(form:any){
+
+    this.ruta.navigate(['/portfolio']);
+    this.datosPorfolio.email =form.emailVer;
   }
 
 }

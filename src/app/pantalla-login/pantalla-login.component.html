@@ -30,10 +30,36 @@
       </p>
     </div>
   </div>
-  <button type="submit" [disabled]="form.invalid" class="btn btn-primary" >Ingresar</button>
-  <button type="button" style="margin-left: 15px;" data-bs-toggle="modal" data-bs-target="#registrarModal"  class="btn btn-primary ">Registrar cuenta</button>
-  <button type="button" (click)="ver()" style="margin-left: 15px;" class="btn btn-primary" >Ver mi Portfolio</button>
+  <button type="submit" [disabled]="form.invalid" style="margin-left: 1%;margin-bottom: 1%"  class="btn btn-primary" >Ingresar</button>
+  <button type="button" style="margin-left: 1%;margin-bottom: 1%" data-bs-toggle="modal" data-bs-target="#registrarModal"  class="btn btn-primary ">Registrar cuenta</button>
+  <button type="button" (click)="ver()" style="margin-left: 1%;margin-bottom: 1%;" class="btn btn-primary" >Ver mi Portfolio</button>
+  <button type="button" data-bs-toggle="modal"  style="margin-left: 1%;margin-bottom: 1%" class="btn btn-primary"  data-bs-target="#verModal" >ver Otros</button>
 </form>
+
+<div style="color: black;" class="modal fade" id="verModal" tabindex="-1" aria-labelledby="verModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="verModalLabel">Ingrese Correo electronico de cuenta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formVer" (ngSubmit)="verOtros(formVer.value)">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Email:</label>
+            <input type="text" formControlName="emailVer" class="form-control" id="recipient-name">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cerrar</button>
+            <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Buscar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </div>
 <div style="color:black ;" class="modal fade" id="registrarModal" tabindex="-1" aria-labelledby="registrarModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -55,6 +81,9 @@
               <span class="input-group-text" id="basic-addon1">Contraseña*</span>
               <input type="password" formControlName="password" class="form-control" placeholder="Conseña de la cuenta"  aria-label="Recipient's username" aria-describedby="basic-addon2"
               [ngClass]="{'is-invalid':formCrear.get('password')?.errors && formCrear.get('password')?.touched, 'is-valid': !formCrear.get('password')?.errors && formCrear.get('password')?.touched}">
+              <p *ngIf="contrasenia?.hasError('minlength')" class="text-danger">
+                La contraseña debe tener 8 o más caracteres
+              </p>
             </div>
 
             <div class="input-group mb-3">

@@ -9,9 +9,9 @@
 </svg>
 <div *ngIf="mostrar == 1" class="input-group mb-3">
   <span class="input-group-text" id="basic-addon1">URL Foto</span>
-  <input type="text" formControlName="foto" n class="form-control" placeholder={{miPorfolio.foto}}  id="basic-url"  aria-describedby="basic-addon3">
+  <input type="text" formControlName="foto" n class="form-control" placeholder="link"  id="basic-url"  aria-describedby="basic-addon3">
   <span class="input-group-text">URL Banner</span>
-  <input type="text" class="form-control" formControlName="banner" placeholder={{miPorfolio.banner}} aria-label="Server">
+  <input type="text" class="form-control" formControlName="banner" placeholder="link" aria-label="Server">
 </div>
 <div class="datosPerfil">
   <div id="datosPersonales">
@@ -30,7 +30,6 @@
     </svg></h4>
 
     <div *ngIf="mostrar == 3" class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon1">Titulo</span>
       <input type="text" formControlName="titulo" placeholder={{miPorfolio.titulo}}  class="form-control" id="basic-url"  aria-describedby="basic-addon3">
     </div>
   </div>
@@ -40,7 +39,6 @@
     </svg></em></p>
 
     <div *ngIf="mostrar ==4" class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon1">Descripcion</span>
       <input type="text" formControlName="descripcion" placeholder={{miPorfolio.descripcion}}  class="form-control" id="basic-url" aria-describedby="basic-addon3">
     </div>
   </div>
