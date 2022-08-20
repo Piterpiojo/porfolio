@@ -16,7 +16,6 @@ import { TokenService } from '../servicios/token.service';
 export class PantallaLoginComponent implements OnInit {
   form:FormGroup;
 
-  miPortfolio:any;
   isLogged = false;
   isLogginFail = false;
   loginUsuario!: LoginUsuario;

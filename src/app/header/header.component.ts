@@ -1,9 +1,8 @@
-import { JsonPipe } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Router } from '@angular/router';
-import { AutenticacionService } from '../servicios/autenticacion.service';
-import { PortfolioService } from '../servicios/portfolio.service';
+
 import { TokenService } from '../servicios/token.service';
 
 
@@ -14,17 +13,11 @@ import { TokenService } from '../servicios/token.service';
 })
 export class HeaderComponent implements OnInit {
 logueado:boolean=false;
-miPortfolio:any;
-  constructor(private ruta:Router, private tokenService:TokenService,private datosPorfolio:PortfolioService) {
+
+  constructor(private ruta:Router, private tokenService:TokenService) {
   }
 
   ngOnInit(): void {
-    this.datosPorfolio.obtenerDatos().subscribe(data => {
-      this.miPortfolio=data;
-    })
-
-
-
     if(this.tokenService.getToken()){
       this.logueado = true;
     }else{
