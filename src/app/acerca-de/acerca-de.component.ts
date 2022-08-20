@@ -35,6 +35,11 @@ formEditar = new FormGroup({
     })
     if(this.tokenService.getToken()){
       this.logueado = true;
+      if(this.tokenService.getUserName() == this.datosPorfolio.email){
+        console.log("todo bien por aca");
+      }else{
+        this.datosPorfolio.email=this.tokenService.getUserName();
+      }
     }else{
       this.logueado= false;
     }
@@ -43,6 +48,7 @@ formEditar = new FormGroup({
   }
 
 editar(form:Persona){
+
 this.datosPorfolio.editarPers(form,this.miPorfolio.persona_id).subscribe(data=>{
   console.log(data);
 })

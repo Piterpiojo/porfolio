@@ -81,8 +81,16 @@ export class PantallaLoginComponent implements OnInit {
 
 
   ver(){
+
+    if(this.isLogged= false){
     this.ruta.navigate(['/portfolio']);
     this.datosPorfolio.email= "aldo@aldo.com"
+    }else{
+
+      this.ruta.navigate(['/portfolio']);
+      this.datosPorfolio.email= "aldo@aldo.com"
+      this.tokenService.logOut();
+    }
   }
 
   onLogin(form:any): void{
@@ -124,9 +132,14 @@ export class PantallaLoginComponent implements OnInit {
   }
 
   verOtros(form:any){
-
+    if(this.isLogged=false){
     this.ruta.navigate(['/portfolio']);
     this.datosPorfolio.email =form.emailVer;
+    }else{
+      this.ruta.navigate(['/portfolio']);
+      this.datosPorfolio.email =form.emailVer;
+      this.tokenService.logOut();
+    }
   }
 
 }

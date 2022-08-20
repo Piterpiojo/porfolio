@@ -14,7 +14,7 @@ import { Proyecto } from '../modelo/Proyecto';
 })
 export class PortfolioService {
 url:string= "https://fierce-cliffs-56094.herokuapp.com/";
-email:string="aldo@aldo.com";
+email:string="";
 
   constructor(private http:HttpClient) { }
 

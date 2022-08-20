@@ -27,9 +27,11 @@ logueado:boolean=false;
 
 
   logout(){
-    window.location.reload();
+    this.ruta.navigate(['/iniciar-sesion'])
     this.tokenService.logOut();
+
   }
+
 ingresar(){
   this.ruta.navigate(['/iniciar-sesion'])
 }
