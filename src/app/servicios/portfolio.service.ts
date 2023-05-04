@@ -13,7 +13,7 @@ import { Proyecto } from '../modelo/Proyecto';
   providedIn: 'root'
 })
 export class PortfolioService {
-url:string= "https://fierce-cliffs-56094.herokuapp.com/";
+url:string= "https://backend-prueba-9fbw.onrender.com";
 email:string="";
 
   constructor(private http:HttpClient) { }
