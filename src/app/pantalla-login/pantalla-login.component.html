@@ -1,138 +1,156 @@
 <app-header></app-header>
-<div>
+<div class="todo-login">
   <h1 class="mb-5" style="text-align: center;">Portfolio Argentina programa</h1>
-<div class="contenedor">
-<form class="logueate" [formGroup]="form" (ngSubmit)="onLogin(form.value)">
-  <h1 class="mb-5" style="text-align: center;">Iniciar Sesión</h1>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email</label>
-    <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}"
-    id="floatingInput" placeholder="Su Usuario">
-    <div *ngIf="Email?.errors && Email?.touched">
-      <p *ngIf="Email?.hasError('required')" class="text-danger">
-        El email es requerido
-      </p>
-      <p *ngIf="Email?.hasError('email')" class="text-danger">
-        Ingrese un email valido
-      </p>
-    </div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Constraseña</label>
-    <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1" [ngClass]="{'is-invalid':Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}"
-    id="floatingPassword" placeholder="Contraseña">
-    <div *ngIf="Password?.errors && Password?.touched">
-      <p *ngIf="Password?.hasError('required')" class="text-danger">
-        La contraseña es requerido
-      </p>
-      <p *ngIf="Password?.hasError('minlength')" class="text-danger">
-        La contraseña debe tener 8 o más caracteres
-      </p>
-    </div>
-  </div>
-  <button type="submit" [disabled]="form.invalid" style="margin-left: 1%;margin-bottom: 1%"  class="btn btn-primary" >Ingresar</button>
-  <button type="button" style="margin-left: 1%;margin-bottom: 1%" data-bs-toggle="modal" data-bs-target="#registrarModal"  class="btn btn-primary ">Registrar cuenta</button>
-  <button type="button" (click)="ver()" style="margin-left: 1%;margin-bottom: 1%;" class="btn btn-primary" >Ver mi Portfolio</button>
-  <button type="button" data-bs-toggle="modal"  style="margin-left: 1%;margin-bottom: 1%" class="btn btn-primary"  data-bs-target="#verModal" >ver Otros</button>
-</form>
-
-<div style="color: black;" class="modal fade" id="verModal" tabindex="-1" aria-labelledby="verModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="verModalLabel">Ingrese Correo electronico de cuenta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="contenedor">
+    <form class="logueate" [formGroup]="form" (ngSubmit)="onLogin(form.value)">
+      <h1 class="mb-5" style="text-align: center;">Iniciar Sesión</h1>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          [ngClass]="{'is-invalid':Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}"
+          id="floatingInput" placeholder="Su Usuario">
+        <div *ngIf="Email?.errors && Email?.touched">
+          <p *ngIf="Email?.hasError('required')" class="text-danger">
+            El email es requerido
+          </p>
+          <p *ngIf="Email?.hasError('email')" class="text-danger">
+            Ingrese un email valido
+          </p>
+        </div>
       </div>
-      <div class="modal-body">
-        <form [formGroup]="formVer" (ngSubmit)="verOtros(formVer.value)">
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Email:</label>
-            <input type="text" formControlName="emailVer" class="form-control" id="recipient-name">
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Constraseña</label>
+        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1"
+          [ngClass]="{'is-invalid':Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}"
+          id="floatingPassword" placeholder="Contraseña">
+        <div *ngIf="Password?.errors && Password?.touched">
+          <p *ngIf="Password?.hasError('required')" class="text-danger">
+            La contraseña es requerido
+          </p>
+          <p *ngIf="Password?.hasError('minlength')" class="text-danger">
+            La contraseña debe tener 8 o más caracteres
+          </p>
+        </div>
+      </div>
+      <button type="submit" [disabled]="form.invalid" style="margin-left: 1%;margin-bottom: 1%"
+        class="btn btn-primary">Ingresar</button>
+      <button type="button" style="margin-left: 1%;margin-bottom: 1%" data-bs-toggle="modal"
+        data-bs-target="#registrarModal" class="btn btn-primary ">Registrar cuenta</button>
+      <button type="button" (click)="ver()" style="margin-left: 1%;margin-bottom: 1%;" class="btn btn-primary">Ver mi
+        Portfolio</button>
+      <button type="button" data-bs-toggle="modal" style="margin-left: 1%;margin-bottom: 1%" class="btn btn-primary"
+        data-bs-target="#verModal">ver Otros</button>
+    </form>
+
+    <div style="color: black;" class="modal fade" id="verModal" tabindex="-1" aria-labelledby="verModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="verModalLabel">Ingrese Correo electronico de cuenta</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cerrar</button>
-            <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Buscar</button>
+          <div class="modal-body">
+            <form [formGroup]="formVer" (ngSubmit)="verOtros(formVer.value)">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Email:</label>
+                <input type="text" formControlName="emailVer" class="form-control" id="recipient-name">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cerrar</button>
+                <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Buscar</button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </div>
+
+
   </div>
-</div>
+  <div style="color:black ;" class="modal fade" id="registrarModal" tabindex="-1" aria-labelledby="registrarModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registrarModalLabel">Creando Cuenta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formCrear" (ngSubmit)="registrar(formCrear.value)">
+            <div class="mb-3">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Email*</span>
+                <input type="email" formControlName="email" class="form-control" placeholder="Email para iniciar Sesión"
+                  aria-label="Username" aria-describedby="basic-addon1"
+                  [ngClass]="{'is-invalid':formCrear.get('email')?.errors && formCrear.get('email')?.touched, 'is-valid': !formCrear.get('email')?.errors && formCrear.get('email')?.touched}">
+              </div>
 
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Contraseña*</span>
+                <input type="password" formControlName="password" class="form-control"
+                  placeholder="Conseña de la cuenta" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                  [ngClass]="{'is-invalid':formCrear.get('password')?.errors && formCrear.get('password')?.touched, 'is-valid': !formCrear.get('password')?.errors && formCrear.get('password')?.touched}">
+                <p *ngIf="contrasenia?.hasError('minlength')" class="text-danger">
+                  La contraseña debe tener 8 o más caracteres
+                </p>
+              </div>
 
-</div>
-<div style="color:black ;" class="modal fade" id="registrarModal" tabindex="-1" aria-labelledby="registrarModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="registrarModalLabel">Creando Cuenta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Nombre*</span>
+                <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre"
+                  aria-label="Username" aria-describedby="basic-addon1"
+                  [ngClass]="{'is-invalid':formCrear.get('nombre')?.errors && formCrear.get('nombre')?.touched, 'is-valid': !formCrear.get('nombre')?.errors && formCrear.get('nombre')?.touched}">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Apellido*</span>
+                <input type="text" formControlName="apellido" class="form-control" placeholder="Apellido"
+                  aria-label="Recipient's username" aria-describedby="basic-addon2"
+                  [ngClass]="{'is-invalid':formCrear.get('apellido')?.errors && formCrear.get('apellido')?.touched, 'is-valid': !formCrear.get('apellido')?.errors && formCrear.get('apellido')?.touched}">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Titulo*</span>
+                <input type="text" formControlName="titulo" placeholder="El titulo que tienes" class="form-control"
+                  id="basic-url" aria-describedby="basic-addon3"
+                  [ngClass]="{'is-invalid':formCrear.get('titulo')?.errors && formCrear.get('titulo')?.touched, 'is-valid': !formCrear.get('titulo')?.errors && formCrear.get('titulo')?.touched}">
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Descripcion</span>
+                <input type="text" formControlName="descripcion" placeholder="Breve descripcion sobre ti"
+                  class="form-control" aria-label="Amount (to the nearest dollar)">
+
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">URL foto</span>
+                <input type="text" formControlName="foto" class="form-control" placeholder="URL imagen"
+                  aria-label="Server">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">URL Banner</span>
+                <input type="text" formControlName="banner" class="form-control" placeholder="URL Banner"
+                  aria-label="Server">
+              </div>
+              <p>* es requerido</p>
+              <p><em>Luego de crear la cuenta tienes que loguearte</em></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" [disabled]="formCrear.invalid" class="btn btn-primary"
+                data-bs-dismiss="modal">Registrar</button>
+
+            </div>
+
+          </form>
+
+        </div>
+
       </div>
-      <div class="modal-body">
-        <form [formGroup]="formCrear" (ngSubmit)="registrar(formCrear.value)" >
-          <div class="mb-3">
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Email*</span>
-              <input type="email"  formControlName="email" class="form-control" placeholder="Email para iniciar Sesión" aria-label="Username" aria-describedby="basic-addon1"
-              [ngClass]="{'is-invalid':formCrear.get('email')?.errors && formCrear.get('email')?.touched, 'is-valid': !formCrear.get('email')?.errors && formCrear.get('email')?.touched}">
-            </div>
-
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Contraseña*</span>
-              <input type="password" formControlName="password" class="form-control" placeholder="Conseña de la cuenta"  aria-label="Recipient's username" aria-describedby="basic-addon2"
-              [ngClass]="{'is-invalid':formCrear.get('password')?.errors && formCrear.get('password')?.touched, 'is-valid': !formCrear.get('password')?.errors && formCrear.get('password')?.touched}">
-              <p *ngIf="contrasenia?.hasError('minlength')" class="text-danger">
-                La contraseña debe tener 8 o más caracteres
-              </p>
-            </div>
-
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Nombre*</span>
-              <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1"
-              [ngClass]="{'is-invalid':formCrear.get('nombre')?.errors && formCrear.get('nombre')?.touched, 'is-valid': !formCrear.get('nombre')?.errors && formCrear.get('nombre')?.touched}">
-            </div>
-
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Apellido*</span>
-              <input type="text" formControlName="apellido" class="form-control" placeholder="Apellido"  aria-label="Recipient's username" aria-describedby="basic-addon2"
-              [ngClass]="{'is-invalid':formCrear.get('apellido')?.errors && formCrear.get('apellido')?.touched, 'is-valid': !formCrear.get('apellido')?.errors && formCrear.get('apellido')?.touched}">
-            </div>
-
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">Titulo*</span>
-              <input type="text" formControlName="titulo" placeholder="El titulo que tienes" class="form-control" id="basic-url"  aria-describedby="basic-addon3"
-              [ngClass]="{'is-invalid':formCrear.get('titulo')?.errors && formCrear.get('titulo')?.touched, 'is-valid': !formCrear.get('titulo')?.errors && formCrear.get('titulo')?.touched}">
-            </div>
-
-            <div class="input-group mb-3">
-              <span class="input-group-text">Descripcion</span>
-              <input type="text" formControlName="descripcion" placeholder="Breve descripcion sobre ti" class="form-control" aria-label="Amount (to the nearest dollar)">
-
-            </div>
-
-            <div class="input-group mb-3">
-              <span class="input-group-text">URL foto</span>
-              <input type="text" formControlName="foto" class="form-control" placeholder="URL imagen" aria-label="Server">
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">URL Banner</span>
-              <input type="text" formControlName="banner" class="form-control" placeholder="URL Banner" aria-label="Server">
-            </div>
-            <p>* es requerido</p>
-            <p><em>Luego de crear la cuenta tienes que loguearte</em></p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" [disabled]="formCrear.invalid" class="btn btn-primary" data-bs-dismiss="modal">Registrar</button>
-
-          </div>
-
-        </form>
-
-      </div>
-
     </div>
-  </div>
 
-</div>
+  </div>
 </div>

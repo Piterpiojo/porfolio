@@ -4,4 +4,9 @@ color: black;
 
 .lista{
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: space-between;
+  margin-right: 4%;
 }
