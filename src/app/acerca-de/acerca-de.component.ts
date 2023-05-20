@@ -11,49 +11,49 @@ import { TokenService } from '../servicios/token.service';
 })
 export class AcercaDeComponent implements OnInit {
 
-mostrar:number = -1;
-miPorfolio:any;
-logueado:boolean= false;
-@Output()
-editoPers: EventEmitter<number> = new EventEmitter<number>();
+  mostrar: number = -1;
+  miPorfolio: any;
+  logueado: boolean = false;
+  @Output()
+  editoPers: EventEmitter<number> = new EventEmitter<number>();
 
-formEditar = new FormGroup({
-  nombre: new FormControl(''),
-  apellido: new FormControl(''),
-  titulo:new FormControl(''),
-  descripcion:new FormControl(''),
-  foto:new FormControl(''),
-  banner:new FormControl('')
+  formEditar = new FormGroup({
+    nombre: new FormControl(''),
+    apellido: new FormControl(''),
+    titulo: new FormControl(''),
+    descripcion: new FormControl(''),
+    foto: new FormControl(''),
+    banner: new FormControl('')
 
-})
+  })
 
-  constructor(private datosPorfolio:PortfolioService,private tokenService:TokenService) { }
+  constructor(private datosPorfolio: PortfolioService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
-    this.datosPorfolio.obtenerDatos().subscribe(data=>{
+    this.datosPorfolio.obtenerDatos().subscribe(data => {
       this.miPorfolio = data;
     })
-    if(this.tokenService.getToken()){
+    if (this.tokenService.getToken()) {
       this.logueado = true;
-      if(this.tokenService.getUserName() == this.datosPorfolio.email){
+      if (this.tokenService.getUserName() == this.datosPorfolio.email) {
         console.log("todo bien por aca");
-      }else{
-        this.datosPorfolio.email=this.tokenService.getUserName();
+      } else {
+        this.datosPorfolio.email = this.tokenService.getUserName();
       }
-    }else{
-      this.logueado= false;
+    } else {
+      this.logueado = false;
     }
 
 
   }
 
-editar(form:Persona){
+  editar(form: Persona) {
 
-this.datosPorfolio.editarPers(form,this.miPorfolio.persona_id).subscribe(data=>{
-  console.log(data);
-})
-this.mostrar = -1;
-this.editoPers.emit();
-}
+    this.datosPorfolio.editarPers(form, this.miPorfolio.persona_id).subscribe(data => {
+      console.log(data);
+    })
+    this.mostrar = -1;
+    this.editoPers.emit();
+  }
 
 }

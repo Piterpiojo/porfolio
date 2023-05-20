@@ -1,8 +1,8 @@
 <header>
 <div class="principio">
   <div class="logo">
-    <img id="princio" src="https://argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1659143423/APLogo-20-20.png" class="perfil">
-    <p>Argentina Pograma  #YoProgramo</p>
+    <button style="background-color: transparent;border-style: none; " (click)="logout()"><img class="redes" src="assets\Home-icon.svg.png"> </button>
+    <p>Argentina Pograma</p>
   </div>
   <div class="espacio">
 
@@ -10,8 +10,8 @@
   </div>
 
   <div class="login">
-    <a href="https://www.facebook.com" target="_blank"> <img class ="redes" src="https://cdn.pixabay.com/photo/2015/05/17/10/51/facebook-770688_960_720.png"> </a>
-    <a href="https://www.linkedin.com/" target="_blank"> <img class="redes" src="https://cdn-icons-png.flaticon.com/512/174/174857.png"></a>
+    <a href="https://www.facebook.com/aldopiojo/" target="_blank"> <img class ="redes" src="https://cdn.pixabay.com/photo/2015/05/17/10/51/facebook-770688_960_720.png"> </a>
+    <a href="https://www.linkedin.com/in/aldo-delgado-34b547239/" target="_blank"> <img class="redes" src="https://cdn-icons-png.flaticon.com/512/174/174857.png"></a>
 
     <button *ngIf=(logueado) (click)="logout()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       Logout

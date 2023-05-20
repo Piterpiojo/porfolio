@@ -13,7 +13,6 @@ export class RecargaDirective implements OnChanges {
     if(changes['appRecarga']){
       this.viewContainerRef.clear();
       this.viewContainerRef.createEmbeddedView(this.templateRef);
-      console.log("actualizado");
     }
   }
 
